@@ -7,11 +7,11 @@ import lesson6.Animals.Dog;
 public class Main {
 
     public static void main(String[] args) {
-        Animal cat= new Cat("Barsik", "red", 3, 200) { };
-        Animal dog= new Dog("Sharik", "black", 4, 500, 10) {};
-        Animal dog2= new Dog("Bobik", "white", 2, 400, 5) {};
+        Animal cat= new Cat("Barsik",  200) {};
+        Animal dog= new Dog("Sharik",   500, 10) {};
+        Animal dog2= new Dog("Bobik",   400, 5) {};
+        ((Dog) dog).swim();
         cat.run();
-        dog.run();
-        dog2.run();
+
     }
 }

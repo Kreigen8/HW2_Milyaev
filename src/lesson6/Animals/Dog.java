@@ -3,8 +3,8 @@ package lesson6.Animals;
 public abstract class Dog extends Animal {
     int swimDistance;
 
-    public Dog(String name, String color, int age, int runDistance, int swimDistance) {
-        super(name, color, age, runDistance);
+    public Dog(String name, int runDistance, int swimDistance) {
+        super(name, runDistance);
         this.swimDistance = swimDistance;
     }
 
