@@ -8,8 +8,8 @@ import java.awt.image.ImageObserver;
 
 public class BattleMap extends JPanel {
     private GameWindow gameWindow;
-    private Image markerX = new ImageIcon("graphic/markerX.png").getImage();
-    private Image markerO = new ImageIcon("graphic/markerO.png").getImage();
+    private Image markerX = new ImageIcon("src/xogame/graphic/markerX.png").getImage();
+    private Image markerO = new ImageIcon("src/xogame/graphic/markerO.png").getImage();
 
     private int gameMode;
     private int fieldSizeX;
