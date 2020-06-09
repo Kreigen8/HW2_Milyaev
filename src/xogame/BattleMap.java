@@ -46,7 +46,6 @@ public class BattleMap extends JPanel {
             Logic.setHumanCoords(cellX, cellY);
         }
 
-
         System.out.printf("cellX: %d  cellY: %d \n", cellX, cellY);
 
         repaint();
@@ -92,6 +91,7 @@ public class BattleMap extends JPanel {
                 if (Logic.map[i][j] == Logic.DOT_O) {
                     drawO((Graphics2D) g, j, i);
                     drawWinText((Graphics2D) g,GameWindow.WINDOW_POS_X, GameWindow.WINDOW_POS_Y);
+//                    paintWinLine((Graphics2D) g, GameWindow.WINDOW_POS_X, GameWindow.WINDOW_POS_Y);
                 }
             }
         }
@@ -99,13 +99,28 @@ public class BattleMap extends JPanel {
 
     public void drawWinText(Graphics2D g, int cellX, int cellY){
         if (Logic.checkWinLines(Logic.DOT_X)) {
-            g.drawImage(youWin, GameWindow.WINDOW_WIDTH/4, GameWindow.WINDOW_HEIGHT/4, GameWindow.WINDOW_WIDTH/2, GameWindow.WINDOW_HEIGHT/3,null);
+            g.drawImage(youWin, cellWidth, cellHeight, cellWidth, cellHeight,null);
         } else if (Logic.checkWinLines(Logic.DOT_O)) {
-            g.drawImage(aiWin, GameWindow.WINDOW_WIDTH/4, GameWindow.WINDOW_HEIGHT/4, GameWindow.WINDOW_WIDTH/2, GameWindow.WINDOW_HEIGHT/3,null);
+            g.drawImage(aiWin, cellWidth, cellHeight, cellWidth, cellHeight,null);
         } else if (Logic.isFull()){
-            g.drawImage(gameover, GameWindow.WINDOW_WIDTH/4, GameWindow.WINDOW_HEIGHT/4, GameWindow.WINDOW_WIDTH/2, GameWindow.WINDOW_HEIGHT/3,null);
+            g.drawImage(gameover, cellWidth, cellHeight, cellWidth, cellHeight,null);
         }
     }
+//    public void drawWinText(Graphics2D g, int cellX, int cellY){
+//        if (Logic.checkWinLines(Logic.DOT_X)) {
+//            g.drawImage(youWin, cellWidth, cellHeight, GameWindow.WINDOW_WIDTH/2, GameWindow.WINDOW_HEIGHT/3,null);
+//        } else if (Logic.checkWinLines(Logic.DOT_O)) {
+//            g.drawImage(aiWin, cellWidth, cellHeight, GameWindow.WINDOW_WIDTH/2, GameWindow.WINDOW_HEIGHT/3,null);
+//        } else if (Logic.isFull()){
+//            g.drawImage(gameover, cellWidth, cellHeight, GameWindow.WINDOW_WIDTH/2, GameWindow.WINDOW_HEIGHT/3,null);
+//        }
+//    }
+
+//    public void paintWinLine(Graphics2D g, int cellX, int cellY){
+//        if (Logic.checkWinLines(Logic.DOT_X) || Logic.checkWinLines(Logic.DOT_O)) {
+//            g.drawLine();
+//        }
+//    }
 
     private void drawX(Graphics2D g, int cellX, int cellY) {
         g.drawImage(markerX, cellX*cellWidth, cellY*cellHeight, cellWidth, cellHeight, null );

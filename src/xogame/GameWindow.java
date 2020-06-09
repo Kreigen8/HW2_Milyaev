@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameWindow extends JFrame {
-    static final int WINDOW_POS_X = 400;
-    static final int WINDOW_POS_Y = 100;
-    static final int WINDOW_WIDTH = 505;
-    static final int WINDOW_HEIGHT = 555;
+    static final int WINDOW_POS_X = Toolkit.getDefaultToolkit().getScreenSize().width/4;
+    static final int WINDOW_POS_Y = Toolkit.getDefaultToolkit().getScreenSize().height/8;
+    static final int WINDOW_WIDTH = 640;
+    static final int WINDOW_HEIGHT = 640;
 
 
     private SettingsWindow settingsWindow;

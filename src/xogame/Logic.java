@@ -49,6 +49,35 @@ public class Logic {
         gameFinished = false;
     }
 
+    public static void goPvP() {
+        gameFinished = true;
+
+        printMap();
+
+        if (checkWinLines(DOT_X)) {
+            System.out.println("Победил первый игрок!");
+            return;
+        }
+
+        if (isFull()) {
+            System.out.println("Ничья");
+            return;
+        }
+
+        printMap();
+
+        if (checkWinLines(DOT_O)) {
+            System.out.println("Победил второй игрок!");
+            return;
+        }
+
+        if (isFull()) {
+            System.out.println("Ничья");
+            return;
+        }
+
+        gameFinished = false;
+    }
 
     public static void initMap() {
         map = new char[SIZE][SIZE];
@@ -79,7 +108,13 @@ public class Logic {
             map[y][x] = DOT_X;
             go();
         }
+    }
 
+    public static void setSecondHumanCoords(int x, int y) {
+        if (isCellValid(y, x)) {
+            map[y][x] = DOT_O;
+            goPvP();
+        }
     }
 
     public static boolean isCellValid(int y, int x) {
@@ -134,7 +169,6 @@ public class Logic {
         }
         return true;
     }
-
 
     static boolean checkLine(int cy, int cx, int vy, int vx, char dot) {
         if (cx + vx * (DOTS_TO_WIN - 1) > SIZE - 1 || cy + vy * (DOTS_TO_WIN - 1) > SIZE - 1 ||

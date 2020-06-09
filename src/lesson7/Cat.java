@@ -3,6 +3,7 @@ package lesson7;
 public class Cat {
     private String name;
     private int hunger;
+    public int maxSatiety = 15;
 
     public Cat(String name, int hunger) {
         this.name = name;
@@ -18,8 +19,6 @@ public class Cat {
         return hunger;
     }
 
-    public int maxSatiety = 15;
-
     public void eat(Plate plate) {
         System.out.println(name + " eat...");
         if (hunger < maxSatiety){
@@ -30,7 +29,4 @@ public class Cat {
         }
 
     }
-
-
-
 }
