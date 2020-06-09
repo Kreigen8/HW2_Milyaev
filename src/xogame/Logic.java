@@ -1,6 +1,5 @@
 package xogame;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 import java.util.Scanner;
@@ -17,6 +16,7 @@ public class Logic {
     static boolean gameFinished = false;
 
     static Random random = new Random();
+
 
     public static void go() {
         gameFinished = true;
@@ -122,13 +122,6 @@ public class Logic {
             y = random.nextInt(SIZE);
         } while (!isCellValid(y, x));
         map[y][x] = DOT_O;
-//        for (int i = 0; i < Logic.SIZE; i++) {
-//            for (int j = 0; j < Logic.SIZE; j++) {
-//                if (Logic.map[i][j] == Logic.DOT_O) {
-//                    drawO((Graphics2D) g, j, i);
-//                }
-//            }
-//        }
     }
 
     public static boolean isFull() {
@@ -168,38 +161,4 @@ public class Logic {
         }
         return false;
     }
-
-
-//    public static boolean checkWin(char c){
-//        if (map[0][0] == c && map[0][1] == c && map[0][2] == c){
-//            return true;
-//        }
-//        if (map[1][0] == c && map[1][1] == c && map[1][2] == c){
-//            return true;
-//        }
-//        if (map[2][0] == c && map[2][1] == c && map[2][2] == c){
-//            return true;
-//        }
-//
-//        if (map[0][0] == c && map[1][0] == c && map[2][0] == c){
-//            return true;
-//        }
-//        if (map[0][1] == c && map[1][1] == c && map[2][1] == c){
-//            return true;
-//        }
-//        if (map[0][2] == c && map[1][2] == c && map[2][2] == c){
-//            return true;
-//        }
-//
-//        if (map[0][0] == c && map[1][1] == c && map[2][2] == c){
-//            return true;
-//        }
-//
-//        if (map[0][2] == c && map[1][1] == c && map[2][0] == c){
-//            return true;
-//        }
-//
-//        return false;
-//    }
-
 }

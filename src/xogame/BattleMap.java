@@ -10,6 +10,9 @@ public class BattleMap extends JPanel {
     private GameWindow gameWindow;
     private Image markerX = new ImageIcon("src/xogame/graphic/markerX.png").getImage();
     private Image markerO = new ImageIcon("src/xogame/graphic/markerO.png").getImage();
+    private Image youWin = new ImageIcon("src/xogame/graphic/youwin.png").getImage();
+    private Image aiWin = new ImageIcon("src/xogame/graphic/aiwin.png").getImage();
+    private Image gameover = new ImageIcon("src/xogame/graphic/gameover.png").getImage();
 
     private int gameMode;
     private int fieldSizeX;
@@ -88,8 +91,19 @@ public class BattleMap extends JPanel {
             for (int j = 0; j < Logic.SIZE; j++) {
                 if (Logic.map[i][j] == Logic.DOT_O) {
                     drawO((Graphics2D) g, j, i);
+                    drawWinText((Graphics2D) g,GameWindow.WINDOW_POS_X, GameWindow.WINDOW_POS_Y);
                 }
             }
+        }
+    }
+
+    public void drawWinText(Graphics2D g, int cellX, int cellY){
+        if (Logic.checkWinLines(Logic.DOT_X)) {
+            g.drawImage(youWin, GameWindow.WINDOW_WIDTH/4, GameWindow.WINDOW_HEIGHT/4, GameWindow.WINDOW_WIDTH/2, GameWindow.WINDOW_HEIGHT/3,null);
+        } else if (Logic.checkWinLines(Logic.DOT_O)) {
+            g.drawImage(aiWin, GameWindow.WINDOW_WIDTH/4, GameWindow.WINDOW_HEIGHT/4, GameWindow.WINDOW_WIDTH/2, GameWindow.WINDOW_HEIGHT/3,null);
+        } else if (Logic.isFull()){
+            g.drawImage(gameover, GameWindow.WINDOW_WIDTH/4, GameWindow.WINDOW_HEIGHT/4, GameWindow.WINDOW_WIDTH/2, GameWindow.WINDOW_HEIGHT/3,null);
         }
     }
 
