@@ -13,6 +13,7 @@ public class BattleMap extends JPanel {
     private Image youWin = new ImageIcon("src/xogame/graphic/youwin.png").getImage();
     private Image aiWin = new ImageIcon("src/xogame/graphic/aiwin.png").getImage();
     private Image gameover = new ImageIcon("src/xogame/graphic/gameover.png").getImage();
+    private Image mainMenuImage = new ImageIcon("src/xogame/graphic/Xo_game.svg.png").getImage();
 
     private int gameMode;
     private int fieldSizeX;
@@ -27,7 +28,6 @@ public class BattleMap extends JPanel {
     public BattleMap(GameWindow gameWindow) {
         this.gameWindow = gameWindow;
         setBackground(Color.ORANGE);
-
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -54,7 +54,11 @@ public class BattleMap extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        if (!isInit){
+            drawMainMenuPic((Graphics2D) g, 0,0);
+        }
         render(g);
+
     }
 
     private void render(Graphics g) {
@@ -90,43 +94,32 @@ public class BattleMap extends JPanel {
             for (int j = 0; j < Logic.SIZE; j++) {
                 if (Logic.map[i][j] == Logic.DOT_O) {
                     drawO((Graphics2D) g, j, i);
-                    drawWinText((Graphics2D) g,GameWindow.WINDOW_POS_X, GameWindow.WINDOW_POS_Y);
-//                    paintWinLine((Graphics2D) g, GameWindow.WINDOW_POS_X, GameWindow.WINDOW_POS_Y);
+                    drawWinText((Graphics2D) g, GameWindow.WINDOW_POS_X, GameWindow.WINDOW_POS_Y);
                 }
             }
         }
     }
 
-    public void drawWinText(Graphics2D g, int cellX, int cellY){
+    public void drawWinText(Graphics2D g, int cellX, int cellY) {
         if (Logic.checkWinLines(Logic.DOT_X)) {
-            g.drawImage(youWin, 0, 0, cellWidth*fieldSizeX, cellHeight*fieldSizeY, null);
+            g.drawImage(youWin, 0, 0, cellWidth * fieldSizeX, cellHeight * fieldSizeY, null);
         } else if (Logic.checkWinLines(Logic.DOT_O)) {
-            g.drawImage(aiWin, 0, 0, cellWidth*fieldSizeX, cellHeight*fieldSizeY,null);
-        } else if (Logic.isFull()){
-            g.drawImage(gameover, 0, 0, cellWidth*fieldSizeX, cellHeight*fieldSizeY,null);
+            g.drawImage(aiWin, 0, 0, cellWidth * fieldSizeX, cellHeight * fieldSizeY, null);
+        } else if (Logic.isFull()) {
+            g.drawImage(gameover, 0, 0, cellWidth * fieldSizeX, cellHeight * fieldSizeY, null);
         }
     }
-//    public void drawWinText(Graphics2D g, int cellX, int cellY){
-//        if (Logic.checkWinLines(Logic.DOT_X)) {
-//            g.drawImage(youWin, cellWidth, cellHeight, GameWindow.WINDOW_WIDTH/2, GameWindow.WINDOW_HEIGHT/3,null);
-//        } else if (Logic.checkWinLines(Logic.DOT_O)) {
-//            g.drawImage(aiWin, cellWidth, cellHeight, GameWindow.WINDOW_WIDTH/2, GameWindow.WINDOW_HEIGHT/3,null);
-//        } else if (Logic.isFull()){
-//            g.drawImage(gameover, cellWidth, cellHeight, GameWindow.WINDOW_WIDTH/2, GameWindow.WINDOW_HEIGHT/3,null);
-//        }
-//    }
 
-//    public void paintWinLine(Graphics2D g, int cellX, int cellY){
-//        if (Logic.checkWinLines(Logic.DOT_X) || Logic.checkWinLines(Logic.DOT_O)) {
-//            g.drawLine();
-//        }
-//    }
+    private void drawMainMenuPic(Graphics2D g, int cellX, int cellY) {
+        g.drawImage(mainMenuImage, 0, 0, getWidth(), getHeight(), null);
+    }
 
     private void drawX(Graphics2D g, int cellX, int cellY) {
-        g.drawImage(markerX, cellX*cellWidth, cellY*cellHeight, cellWidth, cellHeight, null );
+        g.drawImage(markerX, cellX * cellWidth, cellY * cellHeight, cellWidth, cellHeight, null);
     }
+
     private void drawO(Graphics2D g, int cellX, int cellY) {
-        g.drawImage(markerO, cellX*cellWidth, cellY*cellHeight, cellWidth, cellHeight, null );
+        g.drawImage(markerO, cellX * cellWidth, cellY * cellHeight, cellWidth, cellHeight, null);
     }
 
     public void startNewGame(int gameMode, int fieldSizeX, int fieldSizeY, int dotsToWin) {
