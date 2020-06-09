@@ -99,11 +99,11 @@ public class BattleMap extends JPanel {
 
     public void drawWinText(Graphics2D g, int cellX, int cellY){
         if (Logic.checkWinLines(Logic.DOT_X)) {
-            g.drawImage(youWin, cellWidth, cellHeight, cellWidth, cellHeight,null);
+            g.drawImage(youWin, 0, 0, cellWidth*fieldSizeX, cellHeight*fieldSizeY, null);
         } else if (Logic.checkWinLines(Logic.DOT_O)) {
-            g.drawImage(aiWin, cellWidth, cellHeight, cellWidth, cellHeight,null);
+            g.drawImage(aiWin, 0, 0, cellWidth*fieldSizeX, cellHeight*fieldSizeY,null);
         } else if (Logic.isFull()){
-            g.drawImage(gameover, cellWidth, cellHeight, cellWidth, cellHeight,null);
+            g.drawImage(gameover, 0, 0, cellWidth*fieldSizeX, cellHeight*fieldSizeY,null);
         }
     }
 //    public void drawWinText(Graphics2D g, int cellX, int cellY){
